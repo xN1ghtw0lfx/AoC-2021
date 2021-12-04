@@ -5,15 +5,22 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-@SuppressWarnings("ConstantConditions")
-public class Challenge1 {
+import com.google.common.collect.EvictingQueue;
+
+@SuppressWarnings({"ConstantConditions", "UnstableApiUsage"})
+public class Challenge02 {
 
 	public static void main(String[] args) throws IOException {
 		var numbers = new ArrayList<Integer>();
-		try (var br = new BufferedReader(new InputStreamReader(Challenge1.class.getResourceAsStream("numbers.txt"), StandardCharsets.UTF_8))) {
+		var window = EvictingQueue.<Integer>create(3);
+
+		try (var br = new BufferedReader(new InputStreamReader(Challenge02.class.getResourceAsStream("numbers.txt"), StandardCharsets.UTF_8))) {
 			String line;
 			while ((line = br.readLine()) != null) {
-				numbers.add(Integer.parseInt(line));
+				window.add(Integer.parseInt(line));
+				if (window.size() == 3) {
+					numbers.add(window.stream().mapToInt(o -> o).sum());
+				}
 			}
 		}
 

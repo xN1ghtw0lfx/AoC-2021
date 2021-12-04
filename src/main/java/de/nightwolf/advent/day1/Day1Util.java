@@ -11,15 +11,13 @@ public class Day1Util {
 		for (Integer number : numbers) {
 			if (lastNumber == null) {
 				lastNumber = number;
-				System.out.println(number + " N/A");
 				continue;
 			}
+
 			if (lastNumber < number) {
 				increaseCount++;
-				System.out.println(number + " increase");
-			} else {
-				System.out.println(number + " decrease");
 			}
+
 			lastNumber = number;
 		}
 

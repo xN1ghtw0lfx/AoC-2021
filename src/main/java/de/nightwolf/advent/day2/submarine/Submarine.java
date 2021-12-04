@@ -1,10 +1,10 @@
 package de.nightwolf.advent.day2.submarine;
-import java.io.InputStream;
+import java.nio.file.Path;
 
 public abstract class Submarine {
 
 	protected final SubmarineBoardComputer submarineBoardComputer;
-	
+
 	protected int horizontalPosition;
 	protected int depth;
 
@@ -12,8 +12,8 @@ public abstract class Submarine {
 		this.submarineBoardComputer = new SubmarineBoardComputer(this);
 	}
 
-	public void executeInput(InputStream input) {
-		submarineBoardComputer.executeInput(input);
+	public void executeInput(Path pathToInput) {
+		submarineBoardComputer.executeInput(pathToInput);
 	}
 
 	public abstract void forward(int units);
