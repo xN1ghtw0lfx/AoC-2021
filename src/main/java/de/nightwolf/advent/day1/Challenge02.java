@@ -14,7 +14,7 @@ public class Challenge02 {
 		var numbers = new ArrayList<Integer>();
 		var window = EvictingQueue.<Integer>create(3);
 
-		try (var br = new BufferedReader(new InputStreamReader(Challenge02.class.getResourceAsStream("numbers.txt"), StandardCharsets.UTF_8))) {
+		try (var br = new BufferedReader(new InputStreamReader(Challenge02.class.getResourceAsStream("input.txt"), StandardCharsets.UTF_8))) {
 			String line;
 			while ((line = br.readLine()) != null) {
 				window.add(Integer.parseInt(line));

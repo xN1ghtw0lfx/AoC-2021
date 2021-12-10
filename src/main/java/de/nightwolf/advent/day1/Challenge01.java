@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class Challenge01 {
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
-		var numbers = Files.readAllLines(Path.of(Challenge01.class.getResource("numbers.txt").toURI()), StandardCharsets.UTF_8)
+		var numbers = Files.readAllLines(Path.of(Challenge01.class.getResource("input.txt").toURI()), StandardCharsets.UTF_8)
 				.stream()
 				.map(Integer::parseInt)
 				.collect(Collectors.toList());

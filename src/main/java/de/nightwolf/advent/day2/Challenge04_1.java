@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.AbstractMap;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Challenge04_1 {
@@ -13,7 +14,7 @@ public class Challenge04_1 {
 		var h = new AtomicInteger();
 		var a = new AtomicInteger();
 		var d = new AtomicInteger();
-		Files.readAllLines(Path.of(Challenge04_1.class.getResource("subInput.txt").toURI()), StandardCharsets.UTF_8)
+		Files.readAllLines(Path.of(Objects.requireNonNull(Challenge04_1.class.getResource("input.txt")).toURI()), StandardCharsets.UTF_8)
 				.stream()
 				.map(str -> str.split(" "))
 				.map(arr -> new AbstractMap.SimpleImmutableEntry<>(arr[0], Integer.parseInt(arr[1])))

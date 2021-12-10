@@ -10,7 +10,7 @@ public class Challenge04 {
 
 	public static void main(String[] args) throws URISyntaxException {
 		Submarine submarine = new SubmarineV2();
-		submarine.executeInput(Path.of(Challenge03.class.getResource("subInput.txt").toURI()));
+		submarine.executeInput(Path.of(Challenge03.class.getResource("input.txt").toURI()));
 
 		System.out.println(submarine.getPosition());
 	}
