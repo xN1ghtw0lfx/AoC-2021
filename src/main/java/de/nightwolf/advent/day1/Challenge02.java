@@ -1,20 +1,26 @@
 package de.nightwolf.advent.day1;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import com.google.common.collect.EvictingQueue;
 
-@SuppressWarnings({"ConstantConditions", "UnstableApiUsage"})
+@SuppressWarnings({"UnstableApiUsage"})
 public class Challenge02 {
 
 	public static void main(String[] args) throws IOException {
+		var inputStream = Challenge02.class.getResourceAsStream("input.txt");
+		System.out.println(getIncreaseCount(inputStream));
+	}
+
+	public static int getIncreaseCount(InputStream inputStream) throws IOException {
 		var numbers = new ArrayList<Integer>();
 		var window = EvictingQueue.<Integer>create(3);
 
-		try (var br = new BufferedReader(new InputStreamReader(Challenge02.class.getResourceAsStream("input.txt"), StandardCharsets.UTF_8))) {
+		try (var br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
 			String line;
 			while ((line = br.readLine()) != null) {
 				window.add(Integer.parseInt(line));
@@ -24,8 +30,6 @@ public class Challenge02 {
 			}
 		}
 
-		int increaseCount = Day1Util.getNumberOfIncreases(numbers);
-
-		System.out.println(increaseCount);
+		return Day1Util.getNumberOfIncreases(numbers);
 	}
 }

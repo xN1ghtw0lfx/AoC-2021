@@ -42,11 +42,11 @@ public class Challenge18 {
 			x:
 			for (int j = 0; j < numbers[i].length; j++) {
 				var point = new Point(j, i);
-				if (!point.validPoint(numbers)) {
+				if (!point.valid(numbers)) {
 					continue;
 				}
 				for (Basin basin : basins) {
-					if (basin.isPointAlreadyInBasin(point)) {
+					if (basin.contains(point)) {
 						continue x;
 					}
 				}
@@ -72,22 +72,22 @@ public class Challenge18 {
 
 	public static void addNeighborToBasin(Basin basin, Point parent, int[][] numbers) {
 		var up = new Point(parent.getX(), parent.getY() - 1);
-		if (up.validPoint(numbers) && !basin.isPointAlreadyInBasin(up)) {
+		if (up.valid(numbers) && !basin.contains(up)) {
 			basin.add(up);
 			addNeighborToBasin(basin, up, numbers);
 		}
 		var right = new Point(parent.getX() + 1, parent.getY());
-		if (right.validPoint(numbers) && !basin.isPointAlreadyInBasin(right)) {
+		if (right.valid(numbers) && !basin.contains(right)) {
 			basin.add(right);
 			addNeighborToBasin(basin, right, numbers);
 		}
 		var down = new Point(parent.getX(), parent.getY() + 1);
-		if (down.validPoint(numbers) && !basin.isPointAlreadyInBasin(down)) {
+		if (down.valid(numbers) && !basin.contains(down)) {
 			basin.add(down);
 			addNeighborToBasin(basin, down, numbers);
 		}
 		var left = new Point(parent.getX() - 1, parent.getY());
-		if (left.validPoint(numbers) && !basin.isPointAlreadyInBasin(left)) {
+		if (left.valid(numbers) && !basin.contains(left)) {
 			basin.add(left);
 			addNeighborToBasin(basin, left, numbers);
 		}
@@ -105,7 +105,7 @@ public class Challenge18 {
 			points.add(point);
 		}
 
-		public boolean isPointAlreadyInBasin(Point point) {
+		public boolean contains(Point point) {
 			return points.contains(point);
 		}
 
@@ -123,7 +123,7 @@ public class Challenge18 {
 			for (int i = minY; i < maxY; i++) {
 				for (int j = minX; j < maxX; j++) {
 					var point = new Point(j, i);
-					if (isPointAlreadyInBasin(point)) {
+					if (contains(point)) {
 						System.out.print(numbers[i][j] + " ");
 					} else {
 						System.out.print("  ");
@@ -159,7 +159,7 @@ public class Challenge18 {
 			return y;
 		}
 
-		public boolean validPoint(int[][] numbers) {
+		public boolean valid(int[][] numbers) {
 			return y >= 0 && y < numbers.length && x >= 0 && x < numbers[y].length && getValue(numbers) != 9;
 		}
 
