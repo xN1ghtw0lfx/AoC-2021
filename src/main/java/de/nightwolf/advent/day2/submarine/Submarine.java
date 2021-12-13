@@ -1,7 +1,7 @@
 package de.nightwolf.advent.day2.submarine;
 import java.nio.file.Path;
 
-public abstract class Submarine {
+public abstract sealed class Submarine permits SubmarineV1, SubmarineV2 {
 
 	protected final SubmarineBoardComputer submarineBoardComputer;
 

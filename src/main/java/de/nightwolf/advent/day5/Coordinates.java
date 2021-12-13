@@ -17,11 +17,11 @@ public class Coordinates {
 	}
 
 	public boolean isHorizontal() {
-		return start.getX() == end.getX();
+		return start.x() == end.x();
 	}
 
 	public boolean isVertical() {
-		return start.getY() == end.getY();
+		return start.y() == end.y();
 	}
 
 	public boolean isHorizontalOrVertical() {
@@ -29,7 +29,7 @@ public class Coordinates {
 	}
 
 	public boolean isDiagonal() {
-		return Math.abs(start.getX() - end.getX()) == Math.abs(start.getY() - end.getY());
+		return Math.abs(start.x() - end.x()) == Math.abs(start.y() - end.y());
 	}
 
 	public boolean isHorizontalOrVerticalOrDiagonal() {
@@ -38,25 +38,25 @@ public class Coordinates {
 
 	public List<Point> getPoints() {
 		if (isHorizontal()) {
-			int x = start.getX();
-			return IntStream.rangeClosed(Math.min(start.getY(), end.getY()), Math.max(start.getY(), end.getY()))
+			int x = start.x();
+			return IntStream.rangeClosed(Math.min(start.y(), end.y()), Math.max(start.y(), end.y()))
 					.mapToObj(i -> new Point(x, i))
 					.collect(Collectors.toList());
 		} else if (isVertical()) {
-			int y = start.getY();
-			return IntStream.rangeClosed(Math.min(start.getX(), end.getX()), Math.max(start.getX(), end.getX()))
+			int y = start.y();
+			return IntStream.rangeClosed(Math.min(start.x(), end.x()), Math.max(start.x(), end.x()))
 					.mapToObj(i -> new Point(i, y))
 					.collect(Collectors.toList());
 		} else if (isDiagonal()) {
-			var x = IntStream.rangeClosed(Math.min(start.getX(), end.getX()), Math.max(start.getX(), end.getX())).boxed()
+			var x = IntStream.rangeClosed(Math.min(start.x(), end.x()), Math.max(start.x(), end.x())).boxed()
 					.collect(Collectors.toList());
-			var y = IntStream.rangeClosed(Math.min(start.getY(), end.getY()), Math.max(start.getY(), end.getY())).boxed()
+			var y = IntStream.rangeClosed(Math.min(start.y(), end.y()), Math.max(start.y(), end.y())).boxed()
 					.collect(Collectors.toList());
 
-			if (start.getX() > end.getX()) {
+			if (start.x() > end.x()) {
 				Collections.reverse(x);
 			}
-			if (start.getY() > end.getY()) {
+			if (start.y() > end.y()) {
 				Collections.reverse(y);
 			}
 

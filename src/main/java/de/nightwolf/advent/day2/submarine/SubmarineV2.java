@@ -1,5 +1,5 @@
 package de.nightwolf.advent.day2.submarine;
-public class SubmarineV2 extends Submarine {
+public final class SubmarineV2 extends Submarine {
 
 	private int aim;
 

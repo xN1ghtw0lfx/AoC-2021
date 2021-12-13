@@ -8,7 +8,6 @@ import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Challenge20 {
 
@@ -42,7 +41,7 @@ public class Challenge20 {
 				.filter(Objects::nonNull)
 				.map(chars -> chars.stream().reduce(0L, (l, c) -> l * 5 + points.get(c), Long::sum))
 				.sorted()
-				.collect(Collectors.toList());
+				.toList();
 		return scores.get(scores.size() / 2);
 	}
 }

@@ -5,7 +5,6 @@ import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Challenge01 {
 
@@ -21,7 +20,7 @@ public class Challenge01 {
 		var numbers = Files.readAllLines(input.toPath(), StandardCharsets.UTF_8)
 				.stream()
 				.map(Integer::parseInt)
-				.collect(Collectors.toList());
+				.toList();
 
 		return Day1Util.getNumberOfIncreases(numbers);
 	}
